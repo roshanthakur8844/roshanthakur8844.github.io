@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roshan Thakur | Artisan of Code</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;600;800&family=Karma:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- MITHILA PALETTE & VARIABLES --- */
+        :root {
+            --mithila-bg: #F5ECD9;
+            --mithila-black: #1a1a1a;
+            --mithila-red: #C41E3A;
+            --mithila-yellow: #E3A008;
+            --mithila-blue: #1F3A93;
+            --mithila-green: #2E7D32;
+            --border-width: 2px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--mithila-bg);
+            color: var(--mithila-black);
+            font-family: 'Karma', serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4c5a0' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Eczar', serif;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .highlight {
+            color: var(--mithila-red);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0px; left: 0; width: 100%; height: 3px;
+            background: var(--mithila-yellow);
+            border-radius: 50% 50% 50% 50% / 20% 20% 80% 80%;
+            z-index: -1;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-family: 'Eczar', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background-color: transparent;
+            color: var(--mithila-red);
+            border: 2px solid var(--mithila-red);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            box-shadow: 4px 4px 0 var(--mithila-black);
+        }
+
+        .btn-primary:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--mithila-black);
+            background-color: rgba(196, 30, 58, 0.05);
+        }
+
+        .btn-outline {
+            background-color: var(--mithila-black);
+            color: var(--mithila-bg);
+            border: 2px solid var(--mithila-black);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            box-shadow: 4px 4px 0 var(--mithila-yellow);
+        }
+
+        .btn-outline:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--mithila-yellow);
+        }
+
+        /* Resume Button Specific Style */
+        .btn-resume {
+            background-color: var(--mithila-yellow);
+            color: var(--mithila-black);
+            border: 2px solid var(--mithila-black);
+            border-radius: 15px 255px 15px 225px / 225px 15px 255px 15px;
+            box-shadow: 4px 4px 0 var(--mithila-red);
+        }
+        .btn-resume:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--mithila-red);
+        }
+
+        .mithila-border-top {
+            height: 20px; width: 100%;
+            background-image: linear-gradient(135deg, var(--mithila-red) 25%, transparent 25%), 
+                              linear-gradient(225deg, var(--mithila-red) 25%, transparent 25%),
+                              linear-gradient(45deg, var(--mithila-red) 25%, transparent 25%), 
+                              linear-gradient(315deg, var(--mithila-red) 25%, transparent 25%);
+            background-position: 10px 0, 10px 0, 0 0, 0 0;
+            background-size: 20px 20px;
+            background-repeat: repeat-x;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .navbar {
+            position: fixed; top: 0; width: 100%;
+            padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000;
+            background-color: var(--mithila-bg);
+            border-bottom: 2px solid var(--mithila-black);
+            transition: all 0.3s ease;
+        }
+
+        .navbar::after {
+            content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 4px;
+            border-top: 1px solid var(--mithila-black); border-bottom: 1px solid var(--mithila-black);
+        }
+
+        .logo {
+            font-family: 'Eczar', serif; font-size: 2rem; font-weight: 800;
+            color: var(--mithila-red); text-decoration: none;
+            text-shadow: 1px 1px 0 var(--mithila-yellow);
+        }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 30px; }
+        .nav-links a {
+            color: var(--mithila-black); text-decoration: none;
+            font-weight: 600; font-size: 1.1rem; position: relative; padding: 5px 0;
+        }
+
+        .nav-links a::before {
+            content: ''; position: absolute; width: 100%; height: 10px;
+            background-color: var(--mithila-yellow); bottom: 0; left: 0; z-index: -1;
+            transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; opacity: 0.5;
+        }
+        .nav-links a:hover::before, .nav-links a.active::before { transform: scaleX(1); }
+
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--mithila-black); cursor: pointer; }
+
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            padding: 100px 5% 0; position: relative; overflow: hidden;
+        }
+
+        .hero-bg-motif {
+            position: absolute; width: 600px; height: 600px;
+            border: 2px dashed var(--mithila-red); border-radius: 50%;
+            opacity: 0.2; animation: spin 60s linear infinite;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .hero-bg-motif::before {
+            content: ''; width: 500px; height: 500px;
+            border: 20px solid var(--mithila-yellow); border-radius: 50%; border-style: dotted;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .hero-container {
+            display: flex; align-items: center; max-width: 1200px; width: 100%; z-index: 2;
+        }
+
+        .hero-text { flex: 1; padding-right: 50px; }
+        .hero-text h2 { font-family: 'Karma', serif; font-size: 1.5rem; color: var(--mithila-blue); margin-bottom: 10px; }
+        .hero-text h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; color: var(--mithila-black); }
+        .hero-text p {
+            font-size: 1.2rem; margin-bottom: 30px; max-width: 500px;
+            border-left: 4px solid var(--mithila-green); padding-left: 20px;
+        }
+
+        .hero-visual { flex: 1; position: relative; display: flex; justify-content: center; }
+
+        /* --- SUN SVG & ANIMATION STYLES --- */
+        .sun-svg {
+            width: 400px; height: 400px;
+            filter: drop-shadow(5px 5px 0px rgba(0,0,0,0.2));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Classes for JS-triggered random animations (EYE BLINK ONLY) */
+        #right-eye {
+            transform-box: fill-box;
+            transform-origin: center;
+            transition: transform 0.1s;
+        }
+        
+        .blink-now {
+            animation: blinkAnim 0.2s linear;
+        }
+
+        @keyframes blinkAnim {
+            0% { transform: scaleY(1); }
+            50% { transform: scaleY(0.1); }
+            100% { transform: scaleY(1); }
+        }
+
+        /* --- SECTION STYLES --- */
+        .section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; position: relative; }
+        .section-header h2 {
+            font-size: 3rem; display: inline-block; padding: 10px 40px;
+            border: 2px solid var(--mithila-black);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            background: white; box-shadow: 5px 5px 0 var(--mithila-red);
+        }
+        .section-header p { margin-top: 15px; font-size: 1.1rem; color: var(--mithila-blue); font-weight: 600; }
+
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-img-frame {
+            position: relative; padding: 15px;
+            border: 3px solid var(--mithila-black); border-radius: 50%;
+            background-color: var(--mithila-yellow);
+        }
+        .about-img-frame::before {
+            content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border: 2px dashed var(--mithila-red); border-radius: 50%;
+            animation: spin 20s linear infinite reverse;
+        }
+        .about-img-frame img { width: 100%; border-radius: 50%; border: 2px solid var(--mithila-black); background: white; }
+
+        .skills-container {
+            margin-top: 30px; background: white; border: 2px solid var(--mithila-black); padding: 20px;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            box-shadow: 8px 8px 0 var(--mithila-blue);
+        }
+        .skill-item { margin-bottom: 15px; }
+        .skill-name { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 5px; font-family: 'Eczar', serif; }
+        .skill-track {
+            height: 15px; width: 100%; border: 2px solid var(--mithila-black);
+            border-radius: 10px; background: transparent; overflow: hidden; position: relative;
+        }
+        .skill-fill {
+            height: 100%; background-color: var(--mithila-red);
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0,0,0,0.1) 5px, rgba(0,0,0,0.1) 10px);
+            width: 0; border-right: 2px solid var(--mithila-black); transition: width 1.5s ease-out;
+        }
+
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 40px 0; }
+        .timeline::before {
+            content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 4px;
+            background: var(--mithila-green); transform: translateX(-2px);
+            border-left: 1px solid rgba(0,0,0,0.2); border-right: 1px solid rgba(0,0,0,0.2);
+        }
+        .timeline-item { position: relative; width: 50%; padding: 20px 40px; box-sizing: border-box; }
+        .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+        .timeline-item:nth-child(even) { left: 50%; text-align: left; }
+        .timeline-dot {
+            position: absolute; top: 30px; width: 20px; height: 20px; background: var(--mithila-red);
+            border: 2px solid var(--mithila-black); border-radius: 0 50% 50% 50%; transform: rotate(45deg); z-index: 2;
+        }
+        .timeline-item:nth-child(odd) .timeline-dot { right: -10px; }
+        .timeline-item:nth-child(even) .timeline-dot { left: -10px; transform: rotate(-135deg); }
+        .timeline-content {
+            background: white; border: 2px solid var(--mithila-black); padding: 20px;
+            position: relative; border-radius: 10px; box-shadow: 4px 4px 0 var(--mithila-yellow);
+        }
+        .timeline-date { color: var(--mithila-red); font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 5px; }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .project-card {
+            background: white; border: 3px solid var(--mithila-black);
+            outline: 2px solid var(--mithila-black); outline-offset: -8px; padding: 15px; transition: transform 0.3s ease;
+        }
+        .project-card:hover { transform: translateY(-10px) rotate(1deg); }
+        .project-img {
+            height: 180px; width: 100%; background-color: #ddd; border: 2px solid var(--mithila-black);
+            margin-bottom: 15px; overflow: hidden;
+        }
+        .project-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: sepia(0.3) contrast(1.1); transition: transform 0.5s ease;
+        }
+        .project-card:hover .project-img img { transform: scale(1.1); filter: sepia(0); }
+        .project-title {
+            font-size: 1.4rem; color: var(--mithila-blue); margin-bottom: 10px;
+            border-bottom: 2px dashed var(--mithila-yellow); padding-bottom: 5px;
+        }
+        .project-tags span {
+            display: inline-block; font-size: 0.8rem; padding: 3px 8px; margin-right: 5px;
+            border: 1px solid var(--mithila-black); border-radius: 15px; background: var(--mithila-bg); font-weight: 600;
+        }
+        .project-links { margin-top: 15px; display: flex; gap: 15px; }
+        .project-links a { color: var(--mithila-red); font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 5px; }
+
+        .contact-container { display: flex; gap: 40px; flex-wrap: wrap; }
+        .contact-info, .contact-form { flex: 1; min-width: 300px; }
+        .contact-item {
+            display: flex; align-items: center; margin-bottom: 25px; padding: 15px;
+            border: 2px solid var(--mithila-black); background: white; box-shadow: 4px 4px 0 var(--mithila-green);
+        }
+        .contact-icon { font-size: 1.5rem; color: var(--mithila-red); margin-right: 15px; width: 40px; text-align: center; }
+        .form-group { margin-bottom: 20px; }
+        .form-control {
+            width: 100%; padding: 12px; background: transparent; border: none;
+            border-bottom: 2px solid var(--mithila-black); font-family: 'Karma', serif; font-size: 1rem; transition: all 0.3s;
+        }
+        .form-control:focus { outline: none; border-bottom-color: var(--mithila-red); background: rgba(255,255,255,0.5); }
+
+        footer {
+            background-color: var(--mithila-black); color: var(--mithila-bg);
+            padding: 40px 5%; text-align: center; margin-top: 80px; border-top: 10px solid var(--mithila-red);
+        }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin: 20px 0; }
+        .social-links a { color: var(--mithila-bg); font-size: 1.5rem; transition: color 0.3s; }
+        .social-links a:hover { color: var(--mithila-yellow); }
+
+        .draw-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .draw-in.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px);
+                background: var(--mithila-bg); flex-direction: column; align-items: center; justify-content: center;
+                border-right: 5px solid var(--mithila-red); transition: left 0.4s ease;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links li { margin: 20px 0; }
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+            .hero-container { flex-direction: column-reverse; }
+            .hero-text { padding-right: 0; margin-top: 40px; }
+            .hero-text p { margin: 0 auto 30px auto; border-left: none; border-bottom: 4px solid var(--mithila-green); padding-bottom: 10px; padding-left: 0; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; text-align: left !important; }
+            .timeline-item:nth-child(even), .timeline-item:nth-child(odd) { left: 0; }
+            .timeline-dot { left: 10px !important; right: auto !important; transform: rotate(-135deg) !important; }
+            .btn { display: block; margin: 10px auto !important; width: fit-content; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#home" class="logo">Roshan<span style="color:var(--mithila-black)">.</span></a>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-bg-motif"></div>
+        <div class="hero-container">
+            <div class="hero-text draw-in">
+                <h2>Namaste, I am</h2>
+                <h1>Roshan <span class="highlight">Thakur</span></h1>
+                <p>Computer Engineer & Digital Craftsman. Blending the logic of code with the soul of design.</p>
+                <div style="margin-top: 30px;">
+                    <a href="#contact" class="btn btn-primary">Hire Me</a>
+                    <a href="#" class="btn btn-resume" style="margin-left: 15px;">Resume</a>
+                    <a href="#projects" class="btn btn-outline" style="margin-left: 15px;">My Work</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual draw-in">
+                <svg class="sun-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke="#C41E3A" stroke-width="2">
+                        <path d="M100 10 L100 30 M100 170 L100 190 M10 100 L30 100 M170 100 L190 100 
+                                 M36 36 L50 50 M150 150 L164 164 M36 164 L50 150 M150 50 L164 36" />
+                    </g>
+                    <circle cx="100" cy="100" r="60" fill="#E3A008" stroke="#1a1a1a" stroke-width="3" />
+                    <circle cx="100" cy="100" r="45" fill="none" stroke="#C41E3A" stroke-width="2" stroke-dasharray="5,5" />
+                    
+                    <path d="M75 90 Q85 90 95 90 M105 90 Q115 90 125 90" stroke="#1a1a1a" stroke-width="3" fill="none" /> 
+                    
+                    <circle cx="85" cy="100" r="5" fill="#1a1a1a" /> 
+                    
+                    <circle id="right-eye" cx="115" cy="100" r="5" fill="#1a1a1a" /> 
+                    
+                    <path d="M100 105 L100 120" stroke="#1a1a1a" stroke-width="3" fill="none" />
+                    
+                    <path d="M85 130 Q100 145 115 130" stroke="#1a1a1a" stroke-width="3" fill="none" /> 
+                    
+                    <path d="M100 70 L100 85" stroke="#C41E3A" stroke-width="4" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <div class="mithila-border-top"></div>
+
+    <section id="about" class="section">
+        <div class="section-header draw-in">
+            <h2>About <span style="color:var(--mithila-red)">Me</span></h2>
+            <p>Weaving logic into the fabric of the web</p>
+        </div>
+        
+        <div class="about-grid">
+            <div class="about-img-frame draw-in">
+                <img src="https://raw.githubusercontent.com/roshanthakur8844/Portfolio/refs/heads/main/VID-20260218-WA0013.gif" alt="Roshan Avatar">
+            </div>
+            
+            <div class="about-text draw-in">
+                <h3>Computer Engineer</h3>
+                <p style="margin: 15px 0;">I recently completed my Diploma in Computer Engineering with distinction and am currently pursuing my BE at <strong>SPPU (Savitribai Phule Pune University)</strong>.</p>
+                <p>My approach to development is like traditional art: detailed, structured, and meant to last. I specialize in HTML, CSS, JavaScript, and Python.</p>
+                
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-name"><span>HTML/CSS</span><span>90%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-width="90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>JavaScript</span><span>85%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-width="85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Python</span><span>80%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-width="80%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name"><span>Java</span><span>75%</span></div>
+                        <div class="skill-track"><div class="skill-fill" data-width="75%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="mithila-border-top" style="transform: rotate(180deg)"></div>
+
+    <section id="education" class="section">
+        <div class="section-header draw-in">
+            <h2>My <span style="color:var(--mithila-green)">Journey</span></h2>
+            <p>Growing roots in technology</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item draw-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2025 - Present</span>
+                    <h3>BE in Computer Engineering</h3>
+                    <h4>Savitribai Phule Pune University (SPPU)</h4>
+                    <p>Pursuing Bachelor's degree with a focus on advanced software engineering.</p>
+                </div>
+            </div>
+            <div class="timeline-item draw-in">
+                <div class="timeline-dot" style="background: var(--mithila-yellow)"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2021 - 2024</span>
+                    <h3>Diploma in Computer Engineering</h3>
+                    <h4>MSBTE</h4>
+                    <p>Graduated with distinction. Built foundations in coding and databases.</p>
+                </div>
+            </div>
+            <div class="timeline-item draw-in">
+                <div class="timeline-dot" style="background: var(--mithila-blue)"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2020</span>
+                    <h3>Secondary School (SSC)</h3>
+                    <h4>Maharashtra State Board</h4>
+                    <p>Completed high school education with a focus on science.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="mithila-border-top"></div>
+
+    <section id="projects" class="section">
+        <div class="section-header draw-in">
+            <h2>My <span style="color:var(--mithila-blue)">Craft</span></h2>
+            <p>Recent Creations</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card draw-in">
+                <div class="project-img">
+                    <img src="https://raw.githubusercontent.com/roshanthakur8844/25th-December/main/B1.jpeg" alt="Billing System">
+                </div>
+                <h3 class="project-title">Billing System</h3>
+                <p>A lightweight application for dynamic bill creation and calculation.</p>
+                <div class="project-tags" style="margin: 10px 0;">
+                    <span style="border-color: var(--mithila-red)">HTML</span>
+                    <span style="border-color: var(--mithila-blue)">JS</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://roshanthakur8844.github.io/UpdatedBillSystem/updated%20Bill%20System.html" target="_blank">
+                        <i class="fas fa-eye"></i> View Live
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card draw-in">
+                <div class="project-img">
+                    <img src="https://raw.githubusercontent.com/roshanthakur8844/25th-December/main/Car.jpeg" alt="Mustang Simulation">
+                </div>
+                <h3 class="project-title">Mustang '69 Sim</h3>
+                <p>Visual animation showcasing engine smoke, lights, and car physics.</p>
+                <div class="project-tags" style="margin: 10px 0;">
+                    <span style="border-color: var(--mithila-yellow)">CSS Animation</span>
+                    <span style="border-color: var(--mithila-green)">JS</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://roshanthakur8844.github.io/Car/c.html" target="_blank">
+                        <i class="fas fa-eye"></i> View Live
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card draw-in">
+                <div class="project-img">
+                    <img src="https://raw.githubusercontent.com/roshanthakur8844/25th-December/main/image.png" alt="Teacher System">
+                </div>
+                <h3 class="project-title">Teacher Helper</h3>
+                <p>Python & MySQL solution for automating teacher scheduling and updates.</p>
+                <div class="project-tags" style="margin: 10px 0;">
+                    <span style="border-color: var(--mithila-blue)">Python</span>
+                    <span style="border-color: var(--mithila-red)">MySQL</span>
+                </div>
+                <div class="project-links">
+                    <a href="#">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-header draw-in">
+            <h2>Write to <span style="color:var(--mithila-red)">Me</span></h2>
+            <p>Let's create something beautiful together</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info draw-in">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Pune, Maharashtra, India</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h4>Email</h4>
+                        <a href="mailto:roshanthakur.122005@gmail.com" style="color: inherit;">roshanthakur.122005@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item" style="justify-content: center; border: none; box-shadow: none; background: transparent;">
+                    <svg width="100" height="100" viewBox="0 0 100 100">
+                        <path d="M10,50 Q25,25 50,50 T90,50" fill="none" stroke="var(--mithila-red)" stroke-width="2"/>
+                        <path d="M10,50 Q25,75 50,50 T90,50" fill="none" stroke="var(--mithila-green)" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="contact-form draw-in">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" class="form-control" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send via Carrier Pigeon</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="font-family: 'Eczar'; margin-bottom: 10px;">Roshan Thakur</h2>
+        <div class="social-links">
+            <a href="https://rb.gy/gdkfx4"><i class="fab fa-github"></i></a>
+            <a href="https://shorturl.at/KUZI7"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://rb.gy/0ilynh"><i class="fab fa-twitter"></i></a>
+            <a href="https://shorturl.at/o7Epb"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2026 Handcrafted with Code & Culture.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu on click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Intersection Observer for "Draw-In" Animations
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    if(entry.target.querySelector('.skill-fill')) {
+                        const skills = entry.target.querySelectorAll('.skill-fill');
+                        skills.forEach(skill => {
+                            skill.style.width = skill.getAttribute('data-width');
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.draw-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scroll Highlight
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('href').includes(current)) {
+                    li.classList.add('active');
+                }
+            });
+        });
+
+        // Form Handling
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            window.location.href = `mailto:roshanthakur.122005@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message)}`;
+            
+            contactForm.reset();
+            alert("Opening your email client...");
+        });
+
+        /* --- RANDOM SUN ANIMATION SCRIPT --- */
+        const rightEye = document.getElementById('right-eye');
+        
+        // Random blinking only (Smile animation removed)
+        function randomBlink() {
+            // Add blink class
+            rightEye.classList.add('blink-now');
+            
+            // Remove class after animation finishes (200ms)
+            setTimeout(() => {
+                rightEye.classList.remove('blink-now');
+            }, 200);
+
+            // Schedule next blink (random time between 2s and 6s)
+            const nextBlink = Math.random() * 4000 + 2000;
+            setTimeout(randomBlink, nextBlink);
+        }
+        
+        // Start blink loop
+        setTimeout(randomBlink, 3000);
+
+    </script>
+</body>
+</html>
